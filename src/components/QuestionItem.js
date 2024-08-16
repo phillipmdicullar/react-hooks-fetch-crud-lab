@@ -1,6 +1,7 @@
 import React from "react";
 
 function QuestionItem({ question, onDeleteClick, onAnswerChange }) {
+  
   const { id, prompt, answers, correctIndex } = question;
 
   const options = answers.map((answer, index) => (
@@ -8,6 +9,7 @@ function QuestionItem({ question, onDeleteClick, onAnswerChange }) {
       {answer}
     </option>
   ));
+  //function to handle delete
   function handleDelete() {
     onDeleteClick(id);
   }

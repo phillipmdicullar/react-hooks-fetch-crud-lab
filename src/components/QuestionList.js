@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
+
 import QuestionItem from "./QuestionItem";
 
 function QuestionList() {
   const [questions, setQuestions] = useState([]);
-
+//fetching using use effect hook
   useEffect(() => {
     fetch("http://localhost:4000/questions")
       .then((r) => r.json())
@@ -13,7 +14,9 @@ function QuestionList() {
   }, []);
 
   function handleAnswerChange(id, correctIndex) {
+    //fetching the id
     fetch(`http://localhost:4000/questions/${id}`, {
+      //the method used
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -29,6 +32,7 @@ function QuestionList() {
         setQuestions(updatedQuestions);
       });
   }
+  //handling delete functionality
   function handleDeleteClick(id) {
     fetch(`http://localhost:4000/questions/${id}`, {
       method: "DELETE",
